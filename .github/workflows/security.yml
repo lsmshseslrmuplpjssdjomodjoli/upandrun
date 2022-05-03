@@ -1,0 +1,23 @@
+name: Continuous Integration #! ... ワークフロー名
+on: 
+    schedule:
+      - cron: '28 6 * * *'
+
+jobs: #!........................... ジョブの定義開始
+    audit: #!...................... ジョブの ID を定義する. 重複不可.
+        name: Security Audit #!.... ジョブの名. ブラウザで表示されるので分かりやすい名称が良い.
+        runs-on: ubuntu-latest
+        steps: #!.................. ステップの定義開始
+          - name: Checkout #!...... ステップ名. ブラウザで表示されるので分かりやすい名称が良い.
+            uses: actions/checkout@v2.0.0
+          - name: Set Node.js 12.x
+            uses: actions/setup-node@v1.3.0
+            with:
+                node-version: 12.x
+            env:
+                ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+          - name: Install dependencies
+            run: npm ci
+          - name: Audit
+            run: npm audit
+
