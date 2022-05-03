@@ -1,15 +1,15 @@
-name: Continuous Integration
-on: push
+name: Continuous Integration #! ... ワークフロー名
+on: push #!........................ トリガとなるイベント名 (「2.7」や「2.4.6」を参照)
 
-jobs:
-    unit-test:
-        name: Unit Test
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v2.0.0
+jobs: #!........................... ジョブの定義開始
+    unit-test: #!.................. ジョブの ID を定義する. 重複不可.
+        name: Unit Test #!......... ジョブの名. ブラウザで表示されるので分かりやすい名称が良い.
+        runs-on: ubuntu-latest #!.. マシン. note_0003
+        steps: #!.................. ステップの定義開始
+          - name: Checkout #!...... ステップ名. ブラウザで表示されるので分かりやすい名称が良い.
+            uses: actions/checkout@v2.0.0   #! note_0001
           - name: Set Node.js 12.x
-            uses: actions/setup-node@v1.3.0  
+            uses: actions/setup-node@v1.3.0 #! note_0002
             with:
                 node-version: 12.x
             env:
@@ -23,11 +23,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: Checkout
-            uses: actions/checkout@v2.0.0
+            uses: actions/checkout@v2.0.0   #! note_0001
           - name: Set Node.js 12.x
-            uses: actions/setup-node@v1.3.0  
-            with:
-                node-version: 12.x
+            uses: actions/setup-node@v1.3.0 #! note_0002
+            with: #!..................... アクションパラメータ
+                node-version: 12.x #!.... 変数名「node-version」に値「12.x」を設定する. node_0004
             env:
                 ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           - name: Install dependencies
@@ -35,4 +35,24 @@ jobs:
           - name: Lint
             run: npm run lint
 
-                      
+# note_0001:
+#   「uses」はアクションの実行を定義する. ここでは次のアクションを実行している.
+#   - 公開リポジトリ「https://github.com/actions/checkout」のタグ「v2.0.0」のアクション
+#  
+# note_0002:
+#   「uses」はアクションの実行を定義する. ここでは次のアクションを実行している.
+#   - 公開リポジトリ「https://github.com/actions/setup-node」のタグ「v1.3.0」のアクション
+#   指定方法はハッシュ、タグ、ブランチ名の 3通りがある. (P30)
+#   - SHA   「actions/checkout@722adc...598」 .... 理想
+#   - TAG   「actions/checkout@2.0.0」 ........... 次点
+#   - BRANCH「actions/checkout@master」........... デバッグ時のみ
+#
+# note_0003: (p28)
+#   Linux .................. ubuntu-20.04, ubuntu-18.04, ubuntu-16.04
+#   Windows Server ......... windows-latest, windows-2019, windows-2016
+#   macOS .................. macos-latest, macos-10.15
+#   セルフホストランナー ... self-hosted 
+#
+# note_0004: (P32)
+#   INPUT_「変数名」として環境変数としてもアクションに渡される.
+#   つまり、ここでは「INPUT_NODE-VERSION」という環境変数に値がセットされている (詳細は「3.3」)
