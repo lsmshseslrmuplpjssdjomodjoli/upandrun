@@ -11,7 +11,8 @@ jobs:
       - name: Publish to GitHub Packages
         uses: docker/build-push-action@v1.1.0
         with:
-          username: ${{ github.actor }} #!.............. GitHub Action 実行アカウント
+#         username: ${{ github.actor }} #!.............. GitHub Action 実行アカウント
+          username: lsmshseslrmuplpjssdjomodjoli #!.............. GitHub Action 実行アカウント
 #         password: ${{ secrets.GITHUB_TOKEN }} #!...... GitHub Packages へアクセスするための TOKEN
           password: ${{ secrets.PAT }} #!............... GitHub Packages へアクセスするための TOKEN
           registry: docker.pkg.github.com #!............ GitHub Packages 上のレジストリ
