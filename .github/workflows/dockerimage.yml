@@ -14,7 +14,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
         with:
 #         username: ${{ github.actor }} #!.............. GitHub Action 実行アカウント
-          username: 'lsmshseslrmuplpjssdjomodjoli' #!.............. GitHub Action 実行アカウント
+          username: lsmshseslrmuplpjssdjomodjoli #!.............. GitHub Action 実行アカウント
 #         password: ${{ secrets.GITHUB_TOKEN }} #!...... GitHub Packages へアクセスするための TOKEN
           password: ${ ACCESS_TOKEN } #!............... GitHub Packages へアクセスするための TOKEN
           registry: docker.pkg.github.com #!............ GitHub Packages 上のレジストリ
