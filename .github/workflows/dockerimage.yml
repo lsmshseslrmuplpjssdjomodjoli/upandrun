@@ -16,7 +16,7 @@ jobs:
 #         username: ${{ github.actor }} #!.............. GitHub Action 実行アカウント
           username: 'lsmshseslrmuplpjssdjomodjoli' #!.............. GitHub Action 実行アカウント
 #         password: ${{ secrets.GITHUB_TOKEN }} #!...... GitHub Packages へアクセスするための TOKEN
-          password: ${PAT} #!............... GitHub Packages へアクセスするための TOKEN
+          password: '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' #!............... GitHub Packages へアクセスするための TOKEN
           registry: docker.pkg.github.com #!............ GitHub Packages 上のレジストリ
           repository: ${{ github.repository }}/hello #!. Dockerイメージの名称
           tag_with_ref: true #!......................... タグが「1.0.0」である制限を有効にする
