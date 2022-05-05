@@ -18,8 +18,8 @@ jobs:
         with:
           username: ${{ github.actor }} #!.............. GitHub Action 実行アカウント
 #         username: lsmshseslrmuplpjssdjomodjoli #!.............. GitHub Action 実行アカウント
-#         password: ${{ secrets.GITHUB_TOKEN }} #!...... GitHub Packages へアクセスするための TOKEN
-          password: ${ secrets.ACCESS_TOKEN } #!............... GitHub Packages へアクセスするための TOKEN
+          password: ${{ secrets.GITHUB_TOKEN }} #!...... GitHub Packages へアクセスするための TOKEN
+#         password: ${ secrets.ACCESS_TOKEN } #!............... GitHub Packages へアクセスするための TOKEN
 #         registry: docker.pkg.github.com #!............ GitHub Packages 上のレジストリ
           registry: ghcr.io #!............ GitHub Packages 上のレジストリ
           repository: ${{ github.repository }}/hello #!. Dockerイメージの名称
