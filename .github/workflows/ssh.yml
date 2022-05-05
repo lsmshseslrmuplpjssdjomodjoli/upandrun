@@ -1,0 +1,10 @@
+name: SSH Debug
+on: push
+jobs:
+  ssh-debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.0.0
+      - name: Setup tmate session
+        # v3.11
+        uses: mxschmitt/action-tmate@8b4e4ac71822ed7e0ad5fb3d1c33483e9e8fb270
